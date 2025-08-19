@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dialogs', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable(); // можно имя диалога, или null если приватный
+            $table->string('title')->nullable();
             $table->timestamps();
         });
     }
