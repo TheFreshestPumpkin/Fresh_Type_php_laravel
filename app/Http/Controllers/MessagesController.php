@@ -35,7 +35,6 @@ class MessagesController extends Controller
             'body' => $request->body,
         ]);
 
-        // Подгружаем юзера, чтобы сразу вывести имя и т.д.
         $message->load('user');
 
         return response()->json([

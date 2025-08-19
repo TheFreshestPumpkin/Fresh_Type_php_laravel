@@ -76,16 +76,11 @@ class PostsController extends Controller
             'images.*' => 'image|max:2048'
         ]);
 
-        // Загружаем текущие картинки
         $images = $post->images ?? [];
 
-        // Если были выбраны для удаления
         if ($request->has('delete_images')) {
             foreach ($request->delete_images as $img) {
-                // Удаляем файл из storage
                 Storage::disk('public')->delete($img);
-
-                // Убираем из массива
                 $images = array_diff($images, [$img]);
             }
         }
@@ -117,7 +112,6 @@ class PostsController extends Controller
             }
         }
 
-        // 2. Удаляем сам пост
         $post->delete();
 
         return redirect()->route('home');

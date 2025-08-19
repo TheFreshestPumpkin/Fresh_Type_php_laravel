@@ -13,16 +13,16 @@ Route::view('/','welcome');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('/post/{post}/comments', [CommentsController::class, 'store'])->name('comments.store');
-
-Route::delete('post/{post}/comments/{comment}', [CommentsController::class,'destroy'])->name('comments.destroy');
-
-Route::resource('/post', PostsController::class);
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+    Route::post('/post/{post}/comments', [CommentsController::class, 'store'])->name('comments.store');
+
+    Route::delete('post/{post}/comments/{comment}', [CommentsController::class,'destroy'])->name('comments.destroy');
+
+    Route::resource('/post', PostsController::class);
     Route::get('/dialogs', [DialogsController::class, 'index'])->name('dialogs.index');
     Route::get('/dialogs/unread-count', [DialogsController::class, 'fetchUnreadCount'])
         ->name('dialogs.unread');

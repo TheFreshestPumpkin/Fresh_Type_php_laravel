@@ -78,8 +78,8 @@ class FriendsController extends Controller
     {
         $user = Auth::user();
 
-        $incoming = $user->friendRequestsReceived()->with('user')->get(); // входящие
-        $outgoing = $user->friendRequestsSent()->with('friend')->get();   // исходящие
+        $incoming = $user->friendRequestsReceived()->with('user')->get();
+        $outgoing = $user->friendRequestsSent()->with('friend')->get();
 
         return view('friends.requests', compact('incoming', 'outgoing'));
     }

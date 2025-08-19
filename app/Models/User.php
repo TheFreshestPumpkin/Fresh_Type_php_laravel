@@ -67,8 +67,8 @@ class User extends Authenticatable
 
         return $friendsOfMine
             ->merge($friendsOf)
-            ->unique('id')   // убираем дубли по id
-            ->values();      // переиндексируем коллекцию
+            ->unique('id')
+            ->values();
     }
 
     public function isFriendWith($userId)

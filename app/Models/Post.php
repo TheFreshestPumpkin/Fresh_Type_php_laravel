@@ -8,28 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-
-    /**
-     * Поля, доступные для массового присвоения.
-     */
     protected $fillable = [
         'body',
         'pubtime',
         'images',
         'user_id',
     ];
-
-    /**
-     * Преобразования типов.
-     */
     protected $casts = [
         'pubtime' => 'datetime',
-        'images' => 'array', // хранится как JSON в базе
+        'images' => 'array',
     ];
-
-    /**
-     * Связь: Пост принадлежит пользователю.
-     */
     public function user()
     {
         return $this->belongsTo(User::class);
